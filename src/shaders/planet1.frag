@@ -1,5 +1,3 @@
-uniform float uTime;
-
 varying vec2 vUv;
 varying float vV;
 

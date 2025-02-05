@@ -1,3 +1,7 @@
+uniform float uTime;
+
+varying vec2 vUv;
+
 #define PI 3.1415926538
 
 //	Simplex 3D Noise 
@@ -115,8 +119,8 @@ void main() {
     float z = -cos(phi);
     float v = dWarp(vec3(x,y,z));
     
-    vec3 colorA = vec3(218, 229, 235) / 255.0;
-    vec3 colorB = vec3(48, 139, 191) / 255.0;
+    vec3 colorA = vec3(255, 200, 0) / 255.0;
+    vec3 colorB = vec3(181, 45, 4) / 255.0;
     vec3 color = mix(colorA, colorB, v + 1.000);
 
     gl_FragColor = vec4(color,1.0);

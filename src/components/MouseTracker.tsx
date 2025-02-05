@@ -12,8 +12,9 @@ export default function MouseTracker() {
     let vec = new THREE.Vector3();
     let pos = new THREE.Vector3();
     let mouse = new THREE.Vector2();
+    let closestPos = new THREE.Vector3();
 
-    useFrame((_state) => {
+    useFrame(() => {
         vec.set(state.pointer.x, state.pointer.y, 0.5);
         vec.unproject(state.camera);
         vec.sub(state.camera.position).normalize();
@@ -30,11 +31,12 @@ export default function MouseTracker() {
             }
         }
         if (closest) {
+            closest.object.getWorldPosition(closestPos);
             let camDirection = new THREE.Vector3();
             camDirection.copy(state.camera.position).sub(closest.point).normalize();
-            let pointElevation = closest.point.sub(closest.object.position);
+            let pointElevation = closest.point.sub(closestPos);
             let hover = pointElevation.add(pointElevation.multiplyScalar(0.5)).length();
-            let newPos = closest.point.add(camDirection.multiplyScalar(hover));
+            let newPos = closest.point.add(camDirection.multiplyScalar(hover)).add(closestPos);
             pos.copy(newPos);
         }
         pointer.current.position.copy(pos);

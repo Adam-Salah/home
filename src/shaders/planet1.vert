@@ -1,5 +1,3 @@
-varying vec3 vertexPos;
-
 varying vec2 vUv;
 varying float vV;
 
