@@ -1,7 +1,5 @@
 import { ScrollControls } from '@react-three/drei';
 import MouseTracker from './components/MouseTracker';
-import Planet from './components/SolarSystem/Planet';
-import Sun from './components/SolarSystem/Sun';
 import System from './components/SolarSystem/System';
 import './styles/App.css';
 import { Canvas } from '@react-three/fiber';

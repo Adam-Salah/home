@@ -2,12 +2,11 @@ import * as THREE from 'three';
 import { useRef } from 'react';
 
 import Planet from './Planet';
-import { useFrame, useThree } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { useScroll } from '@react-three/drei';
 
 export default function System() {
     const ref = useRef(new THREE.Group());
-    const state = useThree();
     const scroll = useScroll();
 
     const numOfPlanets = 3;

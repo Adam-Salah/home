@@ -6,7 +6,6 @@ import vertex from '../../shaders/sun/sun.vert?raw';
 import fragment from '../../shaders/sun/sun.frag?raw';
 
 export default function Sun() {
-    const ref = useRef();
     const mesh = useRef<THREE.Mesh>(new THREE.Mesh());
 
     const uniforms = useMemo(
