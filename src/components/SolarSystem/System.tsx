@@ -26,16 +26,17 @@ export default function System(props: SystemProps) {
         />
     ));
 
-    let newScroll;
+    let newOffset;
+    let steepness;
     let smoothOffset;
     let offset;
     useFrame((_state) => {
-        newScroll = (scroll.offset % 0.25) * 4;
+        newOffset = scroll.offset % 0.25 * 4
+        steepness = 3;
         //Smooth step function by Inigo Quilez https://iquilezles.org/articles/smoothsteps/
-        smoothOffset = (newScroll**3 / (3 * newScroll**2 - 3 * newScroll + 1));
+        smoothOffset = newOffset**steepness / (newOffset**steepness + (1 - newOffset**steepness));
         offset = (smoothOffset / props.numOfPlanets + Math.floor(scroll.offset * props.numOfPlanets) / props.numOfPlanets) % 1;
         if (offset >= 0) ref.current.rotation.y = Math.PI * 2 * -offset;
-        else ref.current.rotation.y = 0;
         console.log(offset);
     });
 

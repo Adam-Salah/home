@@ -43,7 +43,7 @@ export default function MouseTracker() {
     });
 
     return (
-        <mesh ref={pointer} scale={0.1}>
+        <mesh ref={pointer} scale={0.1} position={[100, 100, 100]}>
             <sphereGeometry />
             <meshStandardMaterial />
         </mesh>
