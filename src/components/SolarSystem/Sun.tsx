@@ -2,10 +2,10 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 
-import vertex from '../../shaders/sun/sun.vert?raw';
-import fragment from '../../shaders/sun/sun.frag?raw';
+import vertex from '../../shaders/sun.vert?raw';
+import fragment from '../../shaders/sun.frag?raw';
 
-export default function Sun() {
+export default function Sun(props: SunProps) {
     const mesh = useRef<THREE.Mesh>(new THREE.Mesh());
 
     const uniforms = useMemo(
@@ -21,8 +21,12 @@ export default function Sun() {
 
     return (
         <mesh ref={mesh}>
-            <sphereGeometry args={[3, 64, 64]} />
+            <sphereGeometry args={[props.size, 64, 64]} />
             <shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} />
         </mesh>
     );
+}
+
+interface SunProps {
+    size: number;
 }

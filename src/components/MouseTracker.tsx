@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useRef } from 'react';
+import PointerInfo from './Interface/PointerInfo';
 
 export default function MouseTracker() {
     const state = useThree();
@@ -8,6 +9,7 @@ export default function MouseTracker() {
     const pointer = useRef<THREE.Mesh>(new THREE.Mesh());
     pointer.current.layers.set(31);
     const raycaster = useRef<THREE.Raycaster>(new THREE.Raycaster());
+    const currentObjectRef = useRef<THREE.Object3D>();
 
     let vec = new THREE.Vector3();
     let pos = new THREE.Vector3();
@@ -35,9 +37,10 @@ export default function MouseTracker() {
             let camDirection = new THREE.Vector3();
             camDirection.copy(state.camera.position).sub(closest.point).normalize();
             let pointElevation = closest.point.sub(closestPos);
-            let hover = pointElevation.add(pointElevation.multiplyScalar(0.5)).length();
+            let hover = Math.min(pointElevation.add(pointElevation.multiplyScalar(0.5)).length(), 1);
             let newPos = closest.point.add(camDirection.multiplyScalar(hover)).add(closestPos);
             pos.copy(newPos);
+            console.log(closest.object.userData.planetId);
         }
         pointer.current.position.copy(pos);
     });

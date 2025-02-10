@@ -13,19 +13,18 @@ export default function Planet(props: PlanetProps) {
 
     const uniforms = useMemo(
         () => ({
-            uTime: { value: 0.0 },
+            planetId: { value: props.planetId },
         }),
         []
     );
 
     useFrame((_state, delta) => {
-        (mesh.current.material as THREE.ShaderMaterial).uniforms.uTime.value += delta;
         mesh.current.rotation.x += 1 * delta;
         mesh.current.rotation.y += 0.5 * delta;
     });
 
     return (
-        <mesh ref={mesh}>
+        <mesh ref={mesh} userData={{planetId: props.planetId}}>
             <sphereGeometry args={[props.size, 64, 64]} />
             <shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} />
         </mesh>
@@ -33,6 +32,7 @@ export default function Planet(props: PlanetProps) {
 }
 
 interface PlanetProps {
+    planetId: number,
     size: number,
     position: { x: number; y: number; z: number }
 }

@@ -4,15 +4,17 @@ import System from './components/SolarSystem/System';
 import './styles/App.css';
 import { Canvas } from '@react-three/fiber';
 import { Perf } from 'r3f-perf';
+import Sun from './components/SolarSystem/Sun';
 
 function App() {
     return (
         <div id='canvas-container'>
-            <Canvas camera={{ fov: 90, zoom: 1, position: [0, 0, 15] }}>
+            <Canvas camera={{ fov: 60, zoom: 1, position: [0, 0, 35] }}>
+                <pointLight color='white' position={[0, 0, 25]} castShadow={false} power={5000} />
                 <pointLight color='white' position={[0, 0, 0]} castShadow={false} power={100} />
-                <pointLight color='white' position={[0, 0, 10]} castShadow={false} power={500} />
+                <Sun size={25}/>
                 <ScrollControls pages={3} damping={0.3} horizontal>
-                    <System numOfPlanets={4} radius={10}/>
+                    <System numOfPlanets={4} radius={30}/>
                 </ScrollControls>
                 <MouseTracker />
                 <Perf />

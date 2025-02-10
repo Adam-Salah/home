@@ -98,9 +98,9 @@ float fbm (vec3 st) {
 
 //https://www.youtube.com/watch?v=cWiLGZPwXCs
 float dWarp(vec3 st) {
-    float fbm1 = fbm(st + vec3(0.912,0.940,0.901) * uTime / 2.0);
-    float fbm2 = fbm(st + vec3(0.487,0.910,0.482) * uTime / 2.0);
-    float fbm3 = fbm(st + vec3(0.220,0.910,0.412) * uTime / 2.0);
+    float fbm1 = fbm(st + vec3(0.912,0.940,0.901) * uTime / 10.0);
+    float fbm2 = fbm(st + vec3(0.487,0.910,0.482) * uTime / 10.0);
+    float fbm3 = fbm(st + vec3(0.220,0.910,0.412) * uTime / 10.0);
     return fbm(vec3(fbm1, fbm2, fbm3));
 }
 
