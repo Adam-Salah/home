@@ -3,6 +3,7 @@ import MouseTracker from './components/MouseTracker';
 import System from './components/SolarSystem/System';
 import './styles/App.css';
 import { Canvas } from '@react-three/fiber';
+import { Perf } from 'r3f-perf';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <System numOfPlanets={4} radius={10}/>
                 </ScrollControls>
                 <MouseTracker />
+                <Perf />
             </Canvas>
         </div>
     );
