@@ -1,3 +1,5 @@
+uniform float planetId;
+
 varying vec2 vUv;
 varying float vV;
 
@@ -6,7 +8,7 @@ varying float vV;
 //	Simplex 3D Noise 
 //	by Ian McEwan, Stefan Gustavson (https://github.com/stegu/webgl-noise)
 //
-vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+vec4 permute(vec4 x){return mod(((x*32.0 +  planetId)+1.0)*x, 289.0);}
 vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
 
 float snoise(vec3 v){ 

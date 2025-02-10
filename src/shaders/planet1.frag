@@ -1,10 +1,12 @@
+uniform float planetId;
+
 varying vec2 vUv;
 varying float vV;
 
 void main() {
     vec2 pos = vec2(vUv) * 1.0;
     
-    vec3 colorA = vec3(7, 122, 21) / 255.0;
+    vec3 colorA = fract(planetId / 6.0 + (vec3(7, 122, 21) / 255.0));
     vec3 colorB = vec3(45, 134, 186) / 255.0;
     vec3 grayscale = vec3(floor((vV+0.212) * 4.736));
     vec3 color = mix(colorA, colorB, grayscale);
