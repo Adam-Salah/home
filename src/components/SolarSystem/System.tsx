@@ -5,14 +5,12 @@ import Planet from './Planet';
 import { useFrame } from '@react-three/fiber';
 import { useScroll } from '@react-three/drei';
 
-export default function System() {
+export default function System(props: SystemProps) {
     const ref = useRef(new THREE.Group());
     const scroll = useScroll();
 
-    const numOfPlanets = 3;
-
     const positions: number[] = [];
-    for (let i = 0; i < numOfPlanets; i++) {
+    for (let i = 0; i < props.numOfPlanets; i++) {
         positions.push(i);
     }
 
@@ -20,9 +18,9 @@ export default function System() {
         <Planet
             key={position}
             position={{
-                x: Math.sin(2 * Math.PI * (position / numOfPlanets)) * 5,
+                x: Math.sin(2 * Math.PI * (position / props.numOfPlanets)) * props.radius,
                 y: 0,
-                z: Math.cos(2 * Math.PI * (position / numOfPlanets)) * 5,
+                z: Math.cos(2 * Math.PI * (position / props.numOfPlanets)) * props.radius,
             }}
         />
     ));
@@ -32,4 +30,9 @@ export default function System() {
     });
 
     return <group ref={ref}>{planetsList}</group>;
+}
+
+interface SystemProps {
+    numOfPlanets: number,
+    radius: number
 }

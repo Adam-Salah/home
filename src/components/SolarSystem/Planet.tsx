@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef } from 'react';
 
 import vertex from '../../shaders/planet1.vert?raw';
 import fragment from '../../shaders/planet1.frag?raw';
-import PlanetProps from './types';
 
 export default function Planet(props: PlanetProps) {
     const mesh = useRef<THREE.Mesh>(new THREE.Mesh());
@@ -32,3 +31,8 @@ export default function Planet(props: PlanetProps) {
         </mesh>
     );
 }
+
+interface PlanetProps {
+    position: { x: number; y: number; z: number }
+}
+
