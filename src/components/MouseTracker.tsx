@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useRef } from 'react';
-import PointerInfo from './Interface/PointerInfo';
 
 export default function MouseTracker() {
     const state = useThree();
@@ -9,7 +8,6 @@ export default function MouseTracker() {
     const pointer = useRef<THREE.Mesh>(new THREE.Mesh());
     pointer.current.layers.set(31);
     const raycaster = useRef<THREE.Raycaster>(new THREE.Raycaster());
-    const currentObjectRef = useRef<THREE.Object3D>();
 
     let vec = new THREE.Vector3();
     let pos = new THREE.Vector3();

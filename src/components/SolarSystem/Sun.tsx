@@ -20,8 +20,8 @@ export default function Sun(props: SunProps) {
     });
 
     return (
-        <mesh ref={mesh}>
-            <sphereGeometry args={[props.size, 64, 64]} />
+        <mesh ref={mesh} scale={props.size}>
+            <sphereGeometry args={[1, 32, 32]} />
             <shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} />
         </mesh>
     );

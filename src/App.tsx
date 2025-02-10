@@ -11,7 +11,7 @@ function App() {
         <div id='canvas-container'>
             <Canvas camera={{ fov: 60, zoom: 1, position: [0, 0, 35] }}>
                 <pointLight color='white' position={[0, 0, 25]} castShadow={false} power={5000} />
-                <pointLight color='white' position={[0, 0, 0]} castShadow={false} power={100} />
+                <pointLight color='white' position={[0, 0, 35]} castShadow={false} power={50} />
                 <Sun size={25}/>
                 <ScrollControls pages={3} damping={0.3} horizontal>
                     <System numOfPlanets={4} radius={30}/>

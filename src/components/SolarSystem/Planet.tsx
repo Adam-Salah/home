@@ -24,8 +24,8 @@ export default function Planet(props: PlanetProps) {
     });
 
     return (
-        <mesh ref={mesh} userData={{planetId: props.planetId}}>
-            <sphereGeometry args={[props.size, 64, 64]} />
+        <mesh ref={mesh} scale={props.size} userData={{planetId: props.planetId}}>
+            <sphereGeometry args={[1, 32, 32]} />
             <shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} />
         </mesh>
     );
