@@ -11,7 +11,7 @@ function App() {
             <Canvas camera={{ fov: 90, zoom: 1, position: [0, 0, 15] }}>
                 <pointLight color='white' position={[0, 0, 0]} castShadow={false} power={100} />
                 <pointLight color='white' position={[0, 0, 10]} castShadow={false} power={500} />
-                <ScrollControls pages={4} damping={0.3} infinite>
+                <ScrollControls pages={5} damping={0.1} horizontal infinite>
                     <System numOfPlanets={4} radius={10}/>
                 </ScrollControls>
                 <MouseTracker />

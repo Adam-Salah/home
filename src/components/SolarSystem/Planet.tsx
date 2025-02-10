@@ -26,13 +26,14 @@ export default function Planet(props: PlanetProps) {
 
     return (
         <mesh ref={mesh}>
-            <sphereGeometry args={[1, 64, 64]} />
+            <sphereGeometry args={[props.size, 64, 64]} />
             <shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} />
         </mesh>
     );
 }
 
 interface PlanetProps {
+    size: number,
     position: { x: number; y: number; z: number }
 }
 

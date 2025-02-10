@@ -17,6 +17,7 @@ export default function System(props: SystemProps) {
     const planetsList = positions.map((position) => (
         <Planet
             key={position}
+            size={(position + 1) / 2}
             position={{
                 x: Math.sin(2 * Math.PI * (position / props.numOfPlanets)) * props.radius,
                 y: 0,
@@ -25,8 +26,17 @@ export default function System(props: SystemProps) {
         />
     ));
 
+    let newScroll;
+    let smoothOffset;
+    let offset;
     useFrame((_state) => {
-        ref.current.rotation.y = Math.PI * 2 * -scroll.offset;
+        newScroll = (scroll.offset % 0.25) * 4;
+        //Smooth step function by Inigo Quilez https://iquilezles.org/articles/smoothsteps/
+        smoothOffset = (newScroll**3 / (3 * newScroll**2 - 3 * newScroll + 1));
+        offset = (smoothOffset / props.numOfPlanets + Math.floor(scroll.offset * props.numOfPlanets) / props.numOfPlanets) % 1;
+        if (offset >= 0) ref.current.rotation.y = Math.PI * 2 * -offset;
+        else ref.current.rotation.y = 0;
+        console.log(offset);
     });
 
     return <group ref={ref}>{planetsList}</group>;
